@@ -15,9 +15,32 @@ public class TestController {
         return "Public Content.";
     }
 
+    @GetMapping("/admin")
+    @PreAuthorize("hasRole('ADMIN')")
+    public String adminAccess() {
+        return "Admin Content.";
+    }
     @GetMapping("/user")
     @PreAuthorize("hasRole('USER')")
     public String userAccess() {
         return "User Content.";
+    }
+
+    @GetMapping("/beneficio")
+    @PreAuthorize("hasRole('BENEFICIO')")
+    public String beneficioAccess() {
+        return "Beneficio Content.";
+    }
+
+    @GetMapping("/agricultor")
+    @PreAuthorize("hasRole('AGRICULTOR')")
+    public String agricultorAccess() {
+        return "Agricultor Content.";
+    }
+
+    @GetMapping("/peso-cabal")
+    @PreAuthorize("hasRole('PESO_CABAL')")
+    public String pesoCabalAccess() {
+        return "Peso Cabal Content.";
     }
 }

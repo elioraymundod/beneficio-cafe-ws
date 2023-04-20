@@ -40,4 +40,13 @@ public class ErrorResponse {
         this(httpStatus, message, details);
         this.path = path;
     }
+
+    public ErrorResponse(HttpStatus httpStatus, String message, String path) {
+        this();
+        this.status = httpStatus.value();
+        this.error = httpStatus.name();
+        this.message = message;
+        this.path = path;
+    }
+
 }

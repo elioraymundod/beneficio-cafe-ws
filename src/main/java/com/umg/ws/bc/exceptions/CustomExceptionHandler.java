@@ -29,13 +29,13 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
         return new ResponseEntity(error, HttpStatus.UNAUTHORIZED);
     }
 
-    /*@ExceptionHandler(Exception.class)
+    @ExceptionHandler(Exception.class)
     public final ResponseEntity<Object> handleExceptionInternal(Exception ex, HttpServletRequest request) {
         List<String> details = new ArrayList<>();
         details.add(ex.getMessage());
-        ErrorResponse error = new ErrorResponse(HttpStatus.INTERNAL_SERVER_ERROR, "Server Error", details, request.getServletPath());
+        ErrorResponse error = new ErrorResponse(HttpStatus.INTERNAL_SERVER_ERROR, ex.getMessage(), request.getServletPath());
         return new ResponseEntity(error, HttpStatus.INTERNAL_SERVER_ERROR);
-    }*/
+    }
 
     @ExceptionHandler(AccessDeniedException.class)
     public final ResponseEntity<Object> handleAccessDeniedException(Exception ex, HttpServletRequest request) {
@@ -66,6 +66,12 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
         details.add(ex.getLocalizedMessage());
         ErrorResponse error = new ErrorResponse(HttpStatus.NOT_FOUND, "Record Not Found", details, request.getServletPath());
         return new ResponseEntity(error, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(AuthBadRequestException.class)
+    public final ResponseEntity<Object> handleAuthBadRequestException(AuthBadRequestException ex, HttpServletRequest request) {
+        ErrorResponse error = new ErrorResponse(HttpStatus.BAD_REQUEST, ex.getMessage(), request.getServletPath());
+        return new ResponseEntity(error, HttpStatus.BAD_REQUEST);
     }
 
     @Override
