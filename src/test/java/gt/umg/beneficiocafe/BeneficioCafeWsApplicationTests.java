@@ -9,7 +9,5 @@ class BeneficioCafeWsApplicationTests {
 	@Test
 	void contextLoads() {
 	}
-	
-	//Test
 
 }
