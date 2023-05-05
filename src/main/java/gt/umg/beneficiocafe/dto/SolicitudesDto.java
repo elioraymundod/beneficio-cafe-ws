@@ -13,6 +13,7 @@ import java.io.Serializable;
 
 
 public class SolicitudesDto implements Serializable {
+	//Solicitudes dto
     private String estado;
     private String nombrePiloto;
     private String placa;
